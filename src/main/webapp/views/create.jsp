@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page pageEncoding="utf-8" language="java" %>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
     />
 </head>
 <body>
-<form action="/store" method="post" modelAttribute="cuaHang">
+<!-- <form action="/store" method="post" modelAttribute="cuaHang">
     <lable>ID: </lable>
     <input type="text" name="id" />
     <br>
@@ -20,7 +21,21 @@
     <lable>Dia Chi: </lable>
     <input type="text" name="diaChi" />
     <input type="submit" value="Submit" />
-</form>
+</form> -->
+<form:form action="/store" method="post" modelAttribute="cuaHang">
+    <lable>ID: </lable>
+    <form:input type="text"  path="id"/>
+    <form:errors path="id" />
+    <br>
+    <lable>Ten Cua Hang: </lable>
+    <form:input type="text"  path="tenCH"/>
+    <form:errors path="tenCH" />
+    <br>
+    <lable>Dia Chi: </lable>
+    <form:input type="text" path="diaChi"/>
+    <form:errors path="diaChi" />
+    <input type="submit" value="Submit"/>
+</form:form>
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

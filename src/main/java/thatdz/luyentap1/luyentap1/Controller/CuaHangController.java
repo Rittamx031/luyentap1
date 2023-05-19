@@ -2,10 +2,13 @@ package thatdz.luyentap1.luyentap1.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.validation.Valid;
 import thatdz.luyentap1.luyentap1.bean.CuaHang;
 
 import java.util.ArrayList;
@@ -61,17 +64,26 @@ public class CuaHangController {
         return "index";
     }
     @PostMapping("store")
-    public String store(Model model, @ModelAttribute("cuaHang") CuaHang cuaHang){
+    public String store(Model model,@Valid @ModelAttribute("cuaHang") CuaHang cuaHang, BindingResult theBindingResult){
         listCH.add(cuaHang);
         model.addAttribute("listCH",listCH);
-        return "index";
+        if (theBindingResult.hasErrors()) {
+            // model.addAttribute("null", theBindingResult.)
+            return "create";
+        } else {
+          return "index";
+        }
     }
     @PostMapping("update")
-    public String update(Model model, @ModelAttribute("CuaHang") CuaHang cuaHang){
+    public String update(@Valid @ModelAttribute("cuaHang") CuaHang cuaHang, BindingResult theBindingResult, Model model) {
+        if (theBindingResult.hasErrors()) {
+            return "update";
+        }
         int idnumber = cuaHang.getId();
         CuaHang cuahangEdit = getbyID(idnumber);
-        listCH.set(listCH.indexOf(cuahangEdit),cuaHang);
-        model.addAttribute("listCH",listCH);
+        listCH.set(listCH.indexOf(cuahangEdit), cuaHang);
+        model.addAttribute("listCH", listCH);
         return "index";
     }
+    
 }

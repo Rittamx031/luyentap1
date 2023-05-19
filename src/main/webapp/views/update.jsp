@@ -15,13 +15,16 @@
 <form:form action="/update" method="post" modelAttribute="cuaHang">
     <lable>ID: </lable>
     <form:input type="text"  path="id"/>
+    <form:errors path="id"/>
     <br>
     <lable>Ten Cua Hang: </lable>
     <form:input type="text"  path="tenCH"/>
+    <form:errors path="tenCH"/>
     <br>
     <lable>Dia Chi: </lable>
     <form:input type="text" path="diaChi"/>
-    <input type="submit" value="Submit" path="name"/>
+    <form:errors path="diaChi"/>
+    <input type="submit" value="Submit"/>
 </form:form>
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
