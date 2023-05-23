@@ -1,5 +1,6 @@
 package thatdz.luyentap1.luyentap1.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +15,8 @@ import thatdz.luyentap1.luyentap1.bean.CuaHang;
 import java.util.ArrayList;
 @Controller
 public class CuaHangController {
-
+    @Autowired
+    private CuaHang cuaHang;
     private static ArrayList<CuaHang> listCH = new ArrayList<>( );
     static {
         listCH.add(new CuaHang("thatdz" ,"thatdz",0));
@@ -35,7 +37,7 @@ public class CuaHangController {
 
     @ModelAttribute("cuaHang")
     public CuaHang setSignUpForm() {
-        return new CuaHang();
+        return cuaHang;
     }
 
     @GetMapping("index")

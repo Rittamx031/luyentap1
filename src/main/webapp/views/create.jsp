@@ -9,6 +9,9 @@
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
             crossorigin="anonymous"
     />
+    <style>
+		.errors {color:red}
+	</style>
 </head>
 <body>
 <!-- <form action="/store" method="post" modelAttribute="cuaHang">
@@ -25,15 +28,16 @@
 <form:form action="/store" method="post" modelAttribute="cuaHang">
     <lable>ID: </lable>
     <form:input type="text"  path="id"/>
-    <form:errors path="id" />
+    <form:errors path="id"  cssClass="errors"/>
     <br>
     <lable>Ten Cua Hang: </lable>
     <form:input type="text"  path="tenCH"/>
-    <form:errors path="tenCH" />
+    <form:errors path="tenCH" cssClass="errors"/>
     <br>
     <lable>Dia Chi: </lable>
     <form:input type="text" path="diaChi"/>
-    <form:errors path="diaChi" />
+    <form:errors path="diaChi" cssClass="errors"/>
+    <br>
     <input type="submit" value="Submit"/>
 </form:form>
 <script
